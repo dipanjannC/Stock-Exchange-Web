@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <style>
+        .btn-project {
+            font-family: 'Poppins', sans-serif;
+            background: #7386D5;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 1.5;
+        }
+
+        #content {
+            width: 100%;
+            padding: 20px;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        .btn-block {
+            background: #7386D5;
+        }
+    </style>
+
+
+
+</head>
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand">StockX</a>
+    <form class="form-inline">
+        <button type="button" class="btn btn-project" data-toggle="modal" data-target="#logoutModal">Logout</button>
+
+    </form>
+
+</nav>
+
+<body>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row" style="background: lavender">
+            <span class="border-bottom"></span>
+            <div class="col">
+
+            </div>
+            <div class="col-xl-8">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs justify-content-center" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+                        </li>
+                </ul>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+
+      <!-- Tab panes -->
+  <div class="tab-content">
+        <div id="home" class="container tab-pane active"><br>
+          <h3>HOME</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div id="menu1" class="container tab-pane fade"><br>
+          <h3>Menu 1</h3>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div id="menu2" class="container tab-pane fade"><br>
+          <h3>Menu 2</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!--Logout Modal-->
+    <div class="modal fade" id="logoutModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Logout</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <!--Update Modal-->
+                <div class="modal-body">
+                    <hr>
+                    Are you Sure? <br>
+                    <hr>
+                    <form action="logout" method="post">
+                        <input type="submit" name="logout-option" value="Yes" class="btn btn-content btn-block" /> <br>
+                    </form>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Logout Modal-->
+</body>
+
+
+</html>
