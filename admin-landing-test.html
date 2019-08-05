@@ -21,6 +21,7 @@
         crossorigin="anonymous"></script>
 
     <style>
+        /* General */
         .btn-project {
             font-family: 'Poppins', sans-serif;
             background: #7386D5;
@@ -42,6 +43,81 @@
         .btn-block {
             background: #7386D5;
         }
+
+        /* General */
+
+
+        /* Form */
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+        }
+
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+
+            .col-25,
+            .col-75,
+            input[type=submit] {
+                width: 100%;
+                margin-top: 0;
+            }
+        }
+
+        /* Form */
     </style>
 
 
@@ -64,46 +140,126 @@
         <div class="row" style="background: lavender">
             <span class="border-bottom"></span>
             <div class="col">
-
+                <!-- Fist Column-->
             </div>
             <div class="col-xl-8">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs justify-content-center" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+                        <a class="nav-link active" data-toggle="tab" href="#option1">Import Data</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+                        <a class="nav-link" data-toggle="tab" href="#option2">Manage Company</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+                        <a class="nav-link" data-toggle="tab" href="#option3">Manage Exchange</a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
-                        </li>
+                        <a class="nav-link" data-toggle="tab" href="#option4">Update IPO details</a>
+                    </li>
                 </ul>
             </div>
             <div class="col">
-
+                <!--side column-->
             </div>
         </div>
     </div>
 
-      <!-- Tab panes -->
-  <div class="tab-content">
-        <div id="home" class="container tab-pane active"><br>
-          <h3>HOME</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div id="option1" class="container tab-pane active"><br>
+            <h3>Import Excel</h3>
+            <br>
+            <br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+            <br>
+            <a href="#"><u>Click here to download sample Excel File</u></a>
         </div>
-        <div id="menu1" class="container tab-pane fade"><br>
-          <h3>Menu 1</h3>
-          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div id="option2" class="container tab-pane fade"><br>
+            <h3>Manage Company</h3>
+            <br>
+            <ul class="nav nav-tabs justify-content-center" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#listcompany">Import Data</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#newcompany">Manage Company</a>
+                </li>
+            </ul>
+
+            <!-- Company Tab panes -->
+            <div class="tab-content">
+                <div id="listcompany" class="container tab-pane active"><br>
+                    <h3>List of companies</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
+                </div>
+                <div id="newcompany" class="container tab-pane fade"><br>
+                    <h3>Create New Company</h3>
+                    <br>
+                    <div class="container">
+                        <form action="/action_page.php">
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="companyname">Company Name</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" id="companyname" name="companyname" placeholder="Company Name">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="coe">COE and Board Members</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" id="coe" name="coe" placeholder="COE and Board Members">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="turnover">Turn Over</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" id="turnover" name="turnover" placeholder="Turn Over">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="subject">Breif Description</label>
+                                </div>
+                                <div class="col-75">
+                                    <textarea id="subject" name="breif" placeholder="breif"
+                                        style="height:200px"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-25">
+                                    <label for="date">Date</label>
+                                </div>
+                                <div class="col-75">
+                                    <input type="text" id="date" name="date" placeholder="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <input type="submit" class='btn btn-info' value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="menu2" class="container tab-pane fade"><br>
-          <h3>Menu 2</h3>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        <div id="option3" class="container tab-pane fade"><br>
+            <h3>Manage Exchange</h3>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                rem aperiam.</p>
         </div>
-      </div>
+        <div id="option4" class="container tab-pane fade"><br>
+            <h3>Update IPO details</h3>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                rem aperiam.</p>
+        </div>
+    </div>
     </div>
 
 
