@@ -158,7 +158,7 @@ body {
 			</div>
 		</form>
 		<div class="text-center">
-			Already have an account? <a href="#">Login here</a>
+			Already have an account? <a href="index">Login here</a>
 		</div>
 	</div>
 </body>

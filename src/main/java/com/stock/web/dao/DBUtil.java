@@ -27,7 +27,7 @@ public class DBUtil {
 		if (connection==null)
 		{
 			try{
-				connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/grizzly_storeDB", "root", "root");
+				connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_management_system", "root", "pass@word1");
 			}
 			catch (SQLException e) {
 				e.printStackTrace();

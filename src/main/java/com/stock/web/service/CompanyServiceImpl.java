@@ -6,7 +6,7 @@ import java.util.List;
 import com.stock.web.model.Company;
 
 public class CompanyServiceImpl implements CompanyService{
-
+	
 	@Override
 	public int insertCompany(Company company) throws SQLException {
 		// TODO Auto-generated method stub
