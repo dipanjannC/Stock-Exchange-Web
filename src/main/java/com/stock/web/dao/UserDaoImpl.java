@@ -5,14 +5,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.springframework.stereotype.Repository;
+
 import com.stock.web.model.User;
 
+@Repository("userDao")
 public class UserDaoImpl implements UserDao {
 
 	static Connection connection = null;
 	static Statement statement = null;
 
-	@Override
+
 	public User userLogin(User user) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = DBUtil.makeConnection();
@@ -53,7 +56,6 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-	@Override
 	public int userSignUp(User user) throws SQLException {
 		// TODO Auto-generated method stub
 		connection = DBUtil.makeConnection();
