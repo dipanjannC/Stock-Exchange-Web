@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700"
 	rel="stylesheet">
-<title>Bootstrap Classic Sign Up Form with Blue Background</title>
+<title>Sign Up</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
@@ -105,25 +106,29 @@ body {
 
 <body>
 	<div class="signup-form">
-		<form action="/examples/actions/confirmation.php" method="post">
+		<form:form action="#" method="post" modelAtrribute="user">
 			<h2>Sign Up</h2>
 			<p>Please fill in this form to create an account!</p>
 			<hr>
 			<div class="form-group">
-				<label>Username</label> <input type="text" class="form-control"
-					name="username" required="required">
+				<label>Username</label> 
+				<form:input type="text" class="form-control"
+					name="username" required="required"/>
 			</div>
 			<div class="form-group">
-				<label>Email Address</label> <input type="email"
-					class="form-control" name="email" required="required">
+				<label>Email Address</label> 
+				<form:input type="email"
+					class="form-control" name="email" required="required"/>
 			</div>
 			<div class="form-group">
-				<label>Password</label> <input type="password" class="form-control"
-					name="password" required="required">
+				<label>Password</label> 
+				<form:input type="password" class="form-control"
+					name="password" required="required"/>
 			</div>
 			<div class="form-group">
-				<label>Confirm Password</label> <input type="password"
-					class="form-control" name="confirm_password" required="required">
+				<label>Confirm Password</label> 
+				<form:input type="password"
+					class="form-control" name="confirm_password" required="required"/>
 			</div>
 			<!-- Multiple Radios (inline) -->
 			<div class="form-group">
@@ -132,8 +137,8 @@ body {
 					<label class="radio-inline" for="role-0"> <input
 						type="radio" name="role" id="role-0" value="User"
 						checked="checked"> User
-					</label> <label class="radio-inline" for="role-1"> <input
-						type="radio" name="role" id="role-1" value="Admin"> Admin
+					</label> <label class="radio-inline" for="role-1">
+					 <form:input type="radio" name="role" id="role-1" value="Admin"/> Admin
 					</label>
 				</div>
 			</div>
@@ -141,9 +146,10 @@ body {
 			<!-- Text input-->
 			<div class="form-group">
 				<label class="col control-label" for="mobilenumber">Mobile
-					Number</label> <input id="mobilenumber" name="mobilenumber" type="text"
+					Number</label> 
+					<form:input id="mobilenumber" name="mobilenumber" type="text"
 					placeholder="Mobile Number" class="form-control input-md"
-					required="">
+					required=""/>
 
 			</div>
 
@@ -156,9 +162,9 @@ body {
 				<button type="submit" class="btn btn-primary btn-lg">Sign
 					Up</button>
 			</div>
-		</form>
+		</form:form>
 		<div class="text-center">
-			Already have an account? <a href="#">Login here</a>
+			Already have an account? <a href="index">Login here</a>
 		</div>
 	</div>
 </body>
