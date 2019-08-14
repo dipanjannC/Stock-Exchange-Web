@@ -106,39 +106,40 @@ body {
 
 <body>
 	<div class="signup-form">
-		<form:form action="#" method="post" modelAtrribute="user">
+		<form:form action="signUp" method="post" modelAtrribute="user">
 			<h2>Sign Up</h2>
 			<p>Please fill in this form to create an account!</p>
 			<hr>
 			<div class="form-group">
 				<label>Username</label> 
-				<form:input type="text" class="form-control"
-					name="username" required="required"/>
+				<form:input path="username" type="text" class="form-control"
+					name="username" maxlength="20" required="required"/>
 			</div>
 			<div class="form-group">
 				<label>Email Address</label> 
-				<form:input type="email"
+				<form:input type="email" path="email"
 					class="form-control" name="email" required="required"/>
 			</div>
 			<div class="form-group">
 				<label>Password</label> 
-				<form:input type="password" class="form-control"
-					name="password" required="required"/>
+				<form:input path="password" type="password" class="form-control"
+					name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" maxlength="20" required="required"/>
 			</div>
 			<div class="form-group">
 				<label>Confirm Password</label> 
-				<form:input type="password"
-					class="form-control" name="confirm_password" required="required"/>
+				<form:input path="confirmPassword" type="password"
+					class="form-control" name="confirmPassword" required="required" id="confirmPassword" onChange="isPasswordMatch();"/>
 			</div>
 			<!-- Multiple Radios (inline) -->
 			<div class="form-group">
 				<label class="col-md-6 control-label" for="role">Role</label>
 				<div class="col-md-4">
-					<label class="radio-inline" for="role-0"> <input
-						type="radio" name="role" id="role-0" value="User"
-						checked="checked"> User
-					</label> <label class="radio-inline" for="role-1">
-					 <form:input type="radio" name="role" id="role-1" value="Admin"/> Admin
+					<label class="radio-inline" for="role-0">
+					 <form:input path="role" type="radio" name="role" id="role-0" value="User"
+						checked="checked"/> User
+					</label>
+					 <label class="radio-inline" for="role-1">
+					 <form:input path="role" type="radio" name="role" id="role-1" value="Admin"/> Admin
 					</label>
 				</div>
 			</div>
@@ -147,15 +148,16 @@ body {
 			<div class="form-group">
 				<label class="col control-label" for="mobilenumber">Mobile
 					Number</label> 
-					<form:input id="mobilenumber" name="mobilenumber" type="text"
+					<form:input path="mobileNumber" id="mobilenumber" name="mobilenumber" type="number"
 					placeholder="Mobile Number" class="form-control input-md"
-					required=""/>
+					pattern="[0-9]{10,10}" title="Don't include '0'" maxlength="10" required="required"/>
 
 			</div>
 
 
 			<div class="form-group">
-				<label class="checkbox-inline"><input type="checkbox"
+				<label class="checkbox-inline">
+				<input type="checkbox"
 					required="required"> <a href="#">confirm email</a></label>
 			</div>
 			<div class="form-group">
@@ -168,5 +170,12 @@ body {
 		</div>
 	</div>
 </body>
-
+<script type="text/javascript">
+$('#confirmPassword').on('keyup', function () {
+    var password = $("#password").val();
+    var confirmPassword = $("#confirmPassword").val();
+    if (password != confirmPassword) $("#divCheckPassword").html("Passwords do not match!").css('color','red');
+    else $("#divCheckPassword").html("Passwords match.").css("color","green");
+});
+</script>
 </html>
