@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    
+
+    <style>
+        /* General */
+        .btn-project {
+            font-family: 'Poppins', sans-serif;
+            background: #7386D5;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 1.5;
+        }
+
+        #content {
+            width: 100%;
+            padding: 20px;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+
+        .btn-block {
+            background: #7386D5;
+        }
+
+        /* General */
+
+
+        /* Form */
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+        }
+
+        input[type=submit] {
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+
+
+        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+
+            .col-25,
+            .col-75,
+            input[type=submit] {
+                width: 100%;
+                margin-top: 0;
+            }
+        }
+
+        /* Form */
+    </style>
+
+
+
+</head>
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand">StockX</a>
+    <form class="form-inline">
+        <button type="button" class="btn btn-project" data-toggle="modal" data-target="#logoutModal">Logout</button>
+
+    </form>
+
+</nav>
+
+<body>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row" style="background: lavender">
+            <span class="border-bottom"></span>
+            <div class="col">
+                <!-- Fist Column-->
+            </div>
+            <div class="col-xl-8">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs justify-content-center" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#option1">IPO's</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#option2">Compare Company</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#option3">Compare Sectors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#option4">Other</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <!--side column-->
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div id="option1" class="container tab-pane active"><br>
+            <h3>IPO Details</h3>
+            <br>
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Company Code</th>
+                            <th>Stock Exchange</th>
+                            <th>Price/Share</th>
+                            <th>Total Shares</th>
+                            <th>Open Date Time</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Company Code
+                            </td>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>john@example.com</td>
+                            <td>date</td>
+                            <td>remarks</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Company Code
+                            </td>
+                            <td>Mary</td>
+                            <td>Moe</td>
+                            <td>mary@example.com</td>
+                            <td>date</td>
+                            <td>remarks</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Company Code
+                            </td>
+                            <td>July</td>
+                            <td>Dooley</td>
+                            <td>july@example.com</td>
+                            <td>date</td>
+                            <td>remarks</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="option2" class="container tab-pane fade"><br>
+            <h3>Comapre Companies</h3>
+            <div align="right">
+                <a href="#" class="btn btn-primary" role="button">Add Company</a>
+            </div>
+            <br>
+
+        </div>
+        <div id="option3" class="container tab-pane fade"><br>
+            <h3>Compare Sectors</h3>
+            <div align="right">
+
+                <a href="#" class="btn btn-primary" role="button">Add Sector</a>
+            </div>
+
+
+            </ul>
+        </div>
+        <div id="option4" class="container tab-pane fade"><br>
+            <h3>Update IPO details</h3>
+            <br>
+            <br>
+
+        </div>
+    </div>
+    </div>
+
+
+    <!--Logout Modal-->
+    <div class="modal fade" id="logoutModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Logout</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <!--Update Modal-->
+                <div class="modal-body">
+                    <hr>
+                    Are you Sure? <br>
+                    <hr>
+                    <form action="logout" method="post">
+                        <input type="submit" name="logout-option" value="Yes" class="btn btn-content btn-block" /> <br>
+                    </form>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Logout Modal-->
+</body>
+
+
+
+
+</html>
