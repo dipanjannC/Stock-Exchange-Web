@@ -1,16 +1,45 @@
 package com.stock.web.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@SequenceGenerator(name = "seq", initialValue = 2001, allocationSize = 1)
+@Table(name = "company")
 public class Company {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+	@Column(name = "company_code")
 	private int companyCode;
+	
+	@Column(name = "company_name")
 	private String companyName;
+	
+	@Column(name = "turnover")
 	private double turnover;
+	
+	@Column(name = "ceo")
 	private String ceo;
+	
+	@Column(name = "board_of_directors")
 	private String boardOfDirectors;
+	
+	@Column(name = "stock_exchanges")
 	private String stockExchanges;
+	
+	@Column(name = "sector")
 	private int sector;
-	private String writeup;
+	
+	@Column(name = "brief")
+	private String brief;
+
+	@Column(name="stock_code")
 	private int stockCode;
 	
 	
@@ -56,17 +85,19 @@ public class Company {
 	public void setSector(int sector) {
 		this.sector = sector;
 	}
-	public String getWriteup() {
-		return writeup;
-	}
-	public void setWriteup(String writeup) {
-		this.writeup = writeup;
-	}
+
 	public int getStockCode() {
 		return stockCode;
 	}
 	public void setStockCode(int stockCode) {
 		this.stockCode = stockCode;
+	}
+	
+	public String getBrief() {
+		return brief;
+	}
+	public void setBrief(String brief) {
+		this.brief = brief;
 	}
 
 	

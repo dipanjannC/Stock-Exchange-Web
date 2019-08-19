@@ -148,7 +148,7 @@ body {
 			<div class="form-group">
 				<label class="col control-label" for="mobilenumber">Mobile
 					Number</label> 
-					<form:input path="mobileNumber" id="mobilenumber" name="mobilenumber" type="number"
+					<form:input path="mobileNumber" id="mobileNumber" name="mobileNumber" type="number"
 					placeholder="Mobile Number" class="form-control input-md"
 					pattern="[0-9]{10,10}" title="Don't include '0'" maxlength="10" required="required"/>
 

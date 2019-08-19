@@ -1,13 +1,39 @@
 package com.stock.web.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@SequenceGenerator(name = "seq", initialValue = 4001, allocationSize = 1)
+@Table(name="ipo_details")
 public class IPODetail {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+	@Column(name = "ipo_id")
 	private int ipoId;
+	
+	@Column(name = "company_name")
 	private String companyName;
+	
+	@Column(name = "stock_exchange")
 	private String stockExchange;
+	
+	@Column(name="price_per_share")
 	private double pricePerShare;
+	
+	@Column(name="total_share")
 	private int totalNumberOfShare;
+	
+	@Column(name="open_time_date")
 	private String openTimeDate;
+	
+	@Column(name="remarks")
 	private String remarks;
 	
 	public int getId() {

@@ -1,10 +1,13 @@
 package com.stock.web.dao;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.Iterator;
+import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import com.stock.web.model.User;
@@ -12,79 +15,81 @@ import com.stock.web.model.User;
 @Repository("userDao")
 public class UserDaoImpl implements UserDao {
 
-	static Connection connection = null;
-	static Statement statement = null;
-
-
-	public User userLogin(User user) throws SQLException {
+	public int userLogin(User user) throws SQLException {
 		// TODO Auto-generated method stub
-		Connection connection = DBUtil.makeConnection();
-		java.sql.Statement statement = null;
-		ResultSet resultSet;
-		User userDetails = new User();
+		int flag = 0;
+		SessionFactory sessionfactory = null;
+		Session session = null;
 
 		try {
-			statement = connection.createStatement();
-			// Executing query to fetch the user details from the database
-			String query = "select * from user_details where user_name='" + user.getUsername() + "'";
-			resultSet = statement.executeQuery(query);
+			sessionfactory = HibernateUtil.getSessionFactory();
+			session = sessionfactory.openSession();
 
-			if (resultSet.next()) {
-				// setting data into the User
-				int userId=resultSet.getInt("id");
-				
-				userDetails.setUserId(userId);
-				userDetails.setUsername(resultSet.getString("username"));
-				userDetails.setPassword(resultSet.getString("password"));
-				userDetails.setUserType(resultSet.getString("usertype"));
-				userDetails.setEmail(resultSet.getString("email"));
-				userDetails.setConfirmed(resultSet.getBoolean("confirmed"));
+			User userDetails = new User();
 
+			userDetails.setUsername(user.getUsername());
+			userDetails.setPassword(user.getPassword());
+
+			@SuppressWarnings("unchecked")
+			List<User> userList = (List<User>) session.createQuery("from user where user_id='" + userDetails.getUsername()
+					+ "' and password='" + userDetails.getPassword() + "'").list();
+
+			Iterator<User> iterator = userList.iterator();
+
+			if (iterator.hasNext()) {
+				flag = 1;
 			}
 
-			if (resultSet != null) {
-				resultSet.close();
-
+			else {
+				flag = 0;
 			}
-			statement.close();
 
-		} catch (SQLException e) {
-			System.out.println(e);
-			throw e;
+		} catch (HibernateException he) {
+			System.out.println(he);
+
 		}
-		return userDetails;
+
+		finally {
+			session.close();
+		}
+
+		return flag;
 
 	}
 
 	public int userSignUp(User user) throws SQLException {
-		// TODO Auto-generated method stub
-		connection = DBUtil.makeConnection();
-		int checkSignUp = 0;
+		SessionFactory sessionfactory = null;
+		Session session = null;
+		int userId = 0;
+
 		try {
-			statement = connection.createStatement();
+			sessionfactory = HibernateUtil.getSessionFactory();
+			session = sessionfactory.openSession();
+			Transaction transaction = session.beginTransaction();
 
-			String query = "insert into user(username," 
-										+ "password,"
-										+ "usertype,"
-										+ "email,"
-										+ "mobilenumber,"
-										+ ") values("
-										+ user.getUsername() + ","
-										+ user.getPassword() + ","
-										+ user.getUserType() + ","
-										+ user.getEmail() + ","
-										+ user.getMobileNumber() + ")";
+			User newUser = new User();
 
-			checkSignUp = statement.executeUpdate(query);
-			
-		} catch (SQLException e) {
-			System.out.println(e);
-			throw e;
-		} finally {
-			connection.close();
+			newUser.setUsername(user.getUsername());
+			newUser.setUsertype(user.getUsertype());
+			newUser.setPassword(user.getPassword());
+			newUser.setEmail(user.getEmail());
+			newUser.setMobileNumber(user.getMobileNumber());
+			newUser.setConfirmed(user.getConfirmed());
+			session.save(newUser);
+			transaction.commit();
+			newUser = session.get(User.class, newUser.getUserId());
+			userId = newUser.getUserId();
+
+		} catch (HibernateException he) {
+
+			System.out.println(he);
 		}
 
-		return checkSignUp;
+		finally {
+			session.close();
+		}
+
+		return userId;
 	}
 
 }

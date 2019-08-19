@@ -14,10 +14,10 @@ public class UserServiceImpl implements UserService {
 	public UserDao userDao;
 	
 	@Override
-	public User userLogin(User user) throws SQLException {
+	public int userLogin(User user) throws SQLException {
 		// TODO Auto-generated method stub
-		User userPojo=userDao.userLogin(user);
-		return userPojo;
+		int checkValid=userDao.userLogin(user);
+		return checkValid;
 	}
 
 	@Override
