@@ -7,7 +7,7 @@ import com.stock.web.model.Company;
 
 public interface CompanyService {
 
-	public int insertCompany(Company company) throws SQLException;
+	public Company insertCompany(Company company) throws SQLException;
 	public Company updateCompany(Company company);
 	public List<Company> getCompanyList() throws SQLException;
 }

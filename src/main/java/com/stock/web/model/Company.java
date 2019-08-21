@@ -1,10 +1,15 @@
 package com.stock.web.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -30,11 +35,15 @@ public class Company {
 	@Column(name = "board_of_directors")
 	private String boardOfDirectors;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "stock_exchange_id")
 	@Column(name = "stock_exchanges")
-	private String stockExchanges;
+	private List<StockExchange> stockExchanges;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "sector_id")
 	@Column(name = "sector")
-	private int sector;
+	private List<Sector> sector;
 	
 	@Column(name = "brief")
 	private String brief;
@@ -73,19 +82,21 @@ public class Company {
 	public void setBoardOfDirectors(String boardOfDirectors) {
 		this.boardOfDirectors = boardOfDirectors;
 	}
-	public String getStockExchanges() {
+
+
+
+	public List<StockExchange> getStockExchanges() {
 		return stockExchanges;
 	}
-	public void setStockExchanges(String stockExchanges) {
+	public void setStockExchanges(List<StockExchange> stockExchanges) {
 		this.stockExchanges = stockExchanges;
 	}
-	public int getSector() {
+	public List<Sector> getSector() {
 		return sector;
 	}
-	public void setSector(int sector) {
+	public void setSector(List<Sector> sector) {
 		this.sector = sector;
 	}
-
 	public int getStockCode() {
 		return stockCode;
 	}

@@ -1,10 +1,13 @@
 package com.stock.web.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -18,8 +21,10 @@ public class IPODetail {
 	@Column(name = "ipo_id")
 	private int ipoId;
 	
-	@Column(name = "company_name")
-	private String companyName;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "company_code")
+	//@Column(name = "company")
+	private  Company company;
 	
 	@Column(name = "stock_exchange")
 	private String stockExchange;
@@ -36,17 +41,18 @@ public class IPODetail {
 	@Column(name="remarks")
 	private String remarks;
 	
-	public int getId() {
+	
+	public int getIpoId() {
 		return ipoId;
 	}
-	public void setId(int ipoId) {
+	public void setIpoId(int ipoId) {
 		this.ipoId = ipoId;
 	}
-	public String getCompanyName() {
-		return companyName;
+	public Company getCompany() {
+		return company;
 	}
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 	public String getStockExchange() {
 		return stockExchange;
