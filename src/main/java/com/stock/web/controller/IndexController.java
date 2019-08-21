@@ -34,38 +34,38 @@ public class IndexController {
 		return "register";
 	}
 	
-	@RequestMapping(path="/signUp",method =RequestMethod.POST)
-	public String signUp(HttpServletRequest request,ModelMap map,@ModelAttribute("user") User user) {
-
-		if (user.getPassword().equals(user.getConfirmPassword())) {
-			int check = 0;
-			try {
-				check = userService.UserSignUp(user);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			map.addAttribute("user",user);
-//			map.addAttribute("name", user.getUsername());
-//	        map.addAttribute("id", user.getUserId());
-//			request.setAttribute("success", "successs");
-			return "register";
-		}
-
-		else {
-//			request.setAttribute("passwordError", "passwordError");
-//			return "PasswordError";
-			return "Incorrect Password";
-		}
-		
-	}
-	
-	@RequestMapping(path="/login",method =RequestMethod.POST)
-	public String userLogin(HttpServletRequest request,@ModelAttribute("user") User user,ModelMap map){
-		
-		
-		return null;
-		
-	}
+//	@RequestMapping(path="/signUp",method =RequestMethod.POST)
+//	public String signUp(HttpServletRequest request,ModelMap map,@ModelAttribute("user") User user) {
+//
+//		if (user.getPassword().equals(user.getConfirmPassword())) {
+//			int check = 0;
+//			try {
+//				check = userService.UserSignUp(user);
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			map.addAttribute("user",user);
+////			map.addAttribute("name", user.getUsername());
+////	        map.addAttribute("id", user.getUserId());
+////			request.setAttribute("success", "successs");
+//			return "register";
+//		}
+//
+//		else {
+////			request.setAttribute("passwordError", "passwordError");
+////			return "PasswordError";
+//			return "Incorrect Password";
+//		}
+//		
+//	}
+//	
+//	@RequestMapping(path="/login",method =RequestMethod.POST)
+//	public String userLogin(HttpServletRequest request,@ModelAttribute("user") User user,ModelMap map){
+//		
+//		
+//		return null;
+//		
+//	}
 	
 }

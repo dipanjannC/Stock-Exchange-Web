@@ -1,7 +1,8 @@
 package com.stock.web.service;
 
 import com.stock.web.model.User;
-import com.stock.web.dao.UserDao;
+import com.stock.web.dao.UserRepository;
+
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,20 +12,18 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
-	public UserDao userDao;
+	public UserRepository userRepository;
 	
 	@Override
-	public int userLogin(User user) throws SQLException {
+	public User userLogin(User user) throws SQLException {
 		// TODO Auto-generated method stub
-		int checkValid=userDao.userLogin(user);
-		return checkValid;
+		return null;
 	}
 
 	@Override
-	public int UserSignUp(User user) throws SQLException {
+	public User userSignUp(User user) throws SQLException {
 		// TODO Auto-generated method stub
-		int checkSignUp = userDao.userSignUp(user);
-		return checkSignUp;
+		return userRepository.save(user);
 	}
 
 }
