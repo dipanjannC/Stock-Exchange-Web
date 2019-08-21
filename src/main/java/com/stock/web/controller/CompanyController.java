@@ -9,27 +9,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.stock.web.model.Sector;
-import com.stock.web.service.SectorService;
+import com.stock.web.model.Company;
+import com.stock.web.service.CompanyService;
 
 @RestController
-public class SectorController {
+public class CompanyController {
 
 	@Autowired
-	public SectorService sectorService;
+	public CompanyService companyService;
 	
-	@PostMapping("/sector/add")
-	public Sector addSector(@RequestBody Sector sector) throws SQLException {
+	
+	@PostMapping("/company/add")
+	public Company addCompany(@RequestBody Company company) throws SQLException {
 		
-		return sectorService.insertSector(sector);
+		return companyService.insertCompany(company);
 	}
 	
 	
-	@GetMapping("/sectors/all")
-	public List<Sector> getSectors() throws SQLException{
+	@GetMapping("/companies")
+	public List<Company> getCompanies() throws SQLException{
 		
-		return sectorService.getSectorList();
+		return companyService.getCompanyList();
 		
 	}
 
+	
 }

@@ -17,7 +17,7 @@ public class UserController {
 	public UserService userService;
 	
 	
-	@PostMapping("/user/add")
+	@PostMapping("/user/signUp")
 	public User addUser(@RequestBody User user) throws SQLException {
 		
 		return userService.userSignUp(user);
