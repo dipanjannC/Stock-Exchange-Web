@@ -40,6 +40,7 @@ public class Company {
 	@Column(name = "stock_exchanges")
 	private List<StockExchange> stockExchanges;
 	
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "sector_id")
 	@Column(name = "sector")
@@ -110,6 +111,7 @@ public class Company {
 	public void setBrief(String brief) {
 		this.brief = brief;
 	}
+
 
 	
 }
