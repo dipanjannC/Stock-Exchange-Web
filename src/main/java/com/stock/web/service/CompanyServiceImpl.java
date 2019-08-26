@@ -11,20 +11,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.stock.web.dao.CompanyRepository;
+import com.stock.web.dao.SectorRepository;
 import com.stock.web.model.Company;
+import com.stock.web.model.Sector;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
 
 	@Autowired
 	public CompanyRepository companyRepository;
-
+	
+	@Autowired
+	public SectorRepository sectorRepository;
+	
+	
 	@Override
 	public Company insertCompany(Company company) throws SQLException {
 		// TODO Auto-generated method stub
-		Company _company = companyRepository.save(company);
-
-		return _company;
+		return companyRepository.save(company);
 	}
 
 	@Override
@@ -45,10 +49,10 @@ public class CompanyServiceImpl implements CompanyService {
 	}
 
 	@Override
-	public ResponseEntity<String> updateCompany(Company company) {
+	public ResponseEntity<String> updateCompany(int companyCode,Company company) {
 		// TODO Auto-generated method stub
 
-		Optional<Company> companyData = companyRepository.findById(company.getCompanyCode());
+		Optional<Company> companyData = companyRepository.findById(companyCode);
 
 		if (companyData.isPresent()) {
 
@@ -62,6 +66,25 @@ public class CompanyServiceImpl implements CompanyService {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+	}
+
+	@Override
+	public List<Company> getCompanyListbySector(String sectorName) {
+		// TODO Auto-generated method stub
+		Sector sector = sectorRepository.findBySectorName(sectorName);
+		return companyRepository.findBySector(sector.getSectorId());
+	}
+
+	@Override
+	public Company getDetailByCompanyName(String companyName) {
+		// TODO Auto-generated method stub
+		return companyRepository.findByCompanyName(companyName);
+	}
+
+	@Override
+	public List<String> getListByPattern(String pattern) {
+		// TODO Auto-generated method stub
+		return companyRepository.getPattern(pattern);
 	}
 
 }

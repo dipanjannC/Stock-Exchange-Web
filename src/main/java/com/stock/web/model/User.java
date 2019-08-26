@@ -7,37 +7,66 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @SequenceGenerator(name = "seq", initialValue = 1001, allocationSize = 1)
-@Table(name = "user")
+@Table(name = "User")
+
 public class User {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
-	@Column(name = "user_id")
+	@Column(name = "Id")
 	private int userId;
 	
-	@Column(name="username")
+	public User( String username, String password, String usertype, String email, int mobileNumber,
+			String confirmed) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.usertype = usertype;
+		this.email = email;
+		this.mobileNumber = mobileNumber;
+		this.confirmed = confirmed;
+	}
+
+
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	@Column(name = "Username")
+	@NotNull(message = "Enter Required Value")
 	private String username;
 	
-	@Column(name = "password")
+
+	@Column(name = "Password")
+	@NotNull(message = "Enter Required Value")
 	private String password;
 	
-	@Column(name = "usertype")
-	private String usertype;
+	
+	@Column(name = "Usertype")
 
-	@Column(name = "email_id")
+	private String usertype;
+	
+    
+	@Column(name = "Email")
+	@NotNull(message = "Enter Required Value")
 	private String email;
 	
-	@Column(name = "mobile_number")
-	private long mobileNumber;
+
+	@Column(name = "Mobile_Number")
+	@NotNull(message = "Enter Required Value")
+	private int mobileNumber;
 	
-	@Column(name = "confirmed")
-	private boolean confirmed;
-	
-	private String confirmPassword;
-	
+
+	@Column(name = "Confirmed")
+
+	private String confirmed;
+
 	public int getUserId() {
 		return userId;
 	}
@@ -78,27 +107,21 @@ public class User {
 		this.email = email;
 	}
 
-	public long getMobileNumber() {
+	public int getMobileNumber() {
 		return mobileNumber;
 	}
 
-	public void setMobileNumber(long mobileNumber) {
+	public void setMobileNumber(int mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public boolean getConfirmed() {
+	public String getConfirmed() {
 		return confirmed;
 	}
 
-	public void setConfirmed(boolean confirmed) {
+	public void setConfirmed(String confirmed) {
 		this.confirmed = confirmed;
 	}
-
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
-	}
+	
+	
 }

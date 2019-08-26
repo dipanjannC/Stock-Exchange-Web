@@ -26,16 +26,16 @@ public class StockExchangeServiceImpl implements StockExchangeService{
 	}
 
 	@Override
-	public ResponseEntity<String> updateStockExchange(StockExchange stockExchange) {
+	public ResponseEntity<String> updateStockExchange(int stockExchangeId,StockExchange stockExchange) {
 		// TODO Auto-generated method stub
 		
-		Optional<StockExchange> stockExchangeData = stockExchangeRepository.findById(stockExchange.getStockExchangeId());
+		Optional<StockExchange> stockExchangeData = stockExchangeRepository.findById(stockExchangeId);
 		if (stockExchangeData.isPresent()) {
 
 			StockExchange _stockExchange = stockExchangeData.get();
-			_stockExchange.setStockExchange(stockExchange.getStockExchange());
+			_stockExchange.setStockExchangeName(stockExchange.getStockExchangeName());
 			_stockExchange.setRemarks(stockExchange.getRemarks());
-			_stockExchange.setAddress(stockExchange.getAddress());
+			_stockExchange.setContactAddress(stockExchange.getContactAddress());
 			_stockExchange.setBrief(stockExchange.getBrief());
 			
 			stockExchangeRepository.save(_stockExchange);

@@ -7,58 +7,73 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
-@SequenceGenerator(name = "seq", initialValue = 6001, allocationSize = 1)
-@Table(name = "stock_exchange")
+@SequenceGenerator(name = "seq", initialValue = 5001, allocationSize = 1)
+@Table(name="stock_exchange")
 public class StockExchange {
-
+	
 	@Id
+	@Column(name="stock_exchange_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
-	@Column(name = "stock_exchange_id")
 	private int stockExchangeId;
 	
-	@Column(name = "stock_exchange")
-	private String stockExchange;
+	@NotNull(message="Enter required Value")
+	@Pattern(regexp = "^[ A-Za-z]+$", message = "Company Name should not contain numbers")
+	@Column(name="stock_exchange_name")
+	private String stockExchangeName;
 	
-	@Column(name = "brief")
+	@NotNull(message="Enter required Value")
+	@Pattern(regexp = "^[ A-Za-z]+$", message = "Company Name should not contain numbers")
+	@Column(name="brief")
 	private String brief;
 	
-	@Column(name = "address")
-	private String address;
+	@NotNull(message="Enter required Value")
+	@Pattern(regexp = "^[ A-Za-z]+$", message = "Company Name should not contain numbers")
+	@Column(name="contact_address")
+	private String contactAddress;
 	
-	@Column(name = "remarks")
+	@NotNull(message="Enter required Value")
+	@Pattern(regexp = "^[ A-Za-z]+$", message = "Company Name should not contain numbers")
+	@Column(name="remarks")
 	private String remarks;
+	
 	
 	public int getStockExchangeId() {
 		return stockExchangeId;
 	}
-	public void setStockExchangeId(int stockexchangeId) {
-		this.stockExchangeId = stockexchangeId;
+	public void setStockExchangeId(int id) {
+		this.stockExchangeId = id;
 	}
-	public String getStockExchange() {
-		return stockExchange;
+	
+	public String getStockExchangeName() {
+		return stockExchangeName;
 	}
-	public void setStockExchange(String stockExchange) {
-		this.stockExchange = stockExchange;
+	public void setStockExchangeName(String stockExchange) {
+		this.stockExchangeName = stockExchange;
 	}
+	
 	public String getBrief() {
 		return brief;
 	}
 	public void setBrief(String brief) {
 		this.brief = brief;
 	}
-	public String getAddress() {
-		return address;
+	
+	public String getContactAddress() {
+		return contactAddress;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setContactAddress(String contactAddress) {
+		this.contactAddress = contactAddress;
 	}
+	
 	public String getRemarks() {
 		return remarks;
 	}
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-}
 
+}
