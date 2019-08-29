@@ -29,6 +29,7 @@ Hibernate is a ORM framework which provides some abstraction layer, meaning that
     
 ### 1.2 Implementation
     # Front End was done using HTML, JSP, CSS and Bootstrap.(Error while integrating with Spring Restful Services as backend)
+    # To View UI implementation go to https://github.com/dipanjannC/Stock-Exchange-Web/blob/master/Resources/UI-1.docx.
     # Backend uses JAVA,MySQL as database.
     
 ### 1.3 Running the Project
