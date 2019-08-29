@@ -11,39 +11,41 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stock.web.model.StockExchange;
 import com.stock.web.service.StockExchangeService;
 
 @RestController
+@RequestMapping("/stock-exchanges")
 public class StockExchangeController {
 
 	@Autowired
 	public StockExchangeService stockExchangeService;
 	
-	@PostMapping("/stock-exchanges/add")
+	@PostMapping("/stock-exchange/add")
 	public StockExchange addStockExchange(@RequestBody StockExchange stockExchange) throws SQLException {
 		
 		return stockExchangeService.insertStockExchange(stockExchange);
 	}
 	
 	
-	@GetMapping("/stock-exchanges/all")
+	@GetMapping("/stock-exchange/all")
 	public List<StockExchange> getStockExchanges() throws SQLException{
 		
 		return stockExchangeService.getStockExchangeList();
 		
 	}
 	
-	@DeleteMapping(value="/stock-exchanges/delete/{stockExchangeId}")
+	@DeleteMapping(value="/stock-exchange/delete/{stockExchangeId}")
 	public ResponseEntity<String> deleteStockExchange(@PathVariable("stockExchangeId") int stockExchangeId){
 		
 		return stockExchangeService.deleteStockExchange(stockExchangeId);
 		
 	}
 	
-	@PutMapping("/stock-exchanges/update/{stcokExchangeId}")
+	@PutMapping("/stock-exchange/update/{stcokExchangeId}")
 	public ResponseEntity<String> updateStockExchanges(@PathVariable("stockExchangeId") int stockExchangeId, @RequestBody StockExchange stockExchange) {
 		
 		return stockExchangeService.updateStockExchange(stockExchangeId,stockExchange);

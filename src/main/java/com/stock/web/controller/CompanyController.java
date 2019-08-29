@@ -12,26 +12,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stock.web.model.Company;
 import com.stock.web.service.CompanyService;
 
 @RestController
+@RequestMapping("/companies")
 public class CompanyController {
 
 	@Autowired
 	public CompanyService companyService;
 	
 	
-	@PostMapping("/companies/add")
+	@PostMapping("/company/add")
 	public Company addCompany(@RequestBody Company company) throws SQLException {
 		
 		return companyService.insertCompany(company);
 	}
 	
 	
-	@GetMapping("/companies/all")
+	@GetMapping("/company/all")
 	public List<Company> getCompanies() throws SQLException{
 		
 		return companyService.getCompanyList();
@@ -39,7 +41,7 @@ public class CompanyController {
 	}
 	
 	
-	@DeleteMapping(value="/companies/delete/{companyCode}")
+	@DeleteMapping(value="/company/delete/{companyCode}")
 	public ResponseEntity<String> deleteCompany(@PathVariable("companyCode") int companyCode){
 		
 		return companyService.deleteCompany(companyCode);
@@ -47,7 +49,7 @@ public class CompanyController {
 	}
 	
 	
-	@PutMapping("/companies/update/{companyCode}")
+	@PutMapping("/company/update/{companyCode}")
 	public ResponseEntity<String> updateCompany(@PathVariable("comanyCode") int companyCode, @RequestBody Company company) {
 		return companyService.updateCompany(companyCode,company);
 

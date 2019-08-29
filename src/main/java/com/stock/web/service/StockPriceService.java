@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.stock.web.model.StockPrice;
 
@@ -16,4 +17,6 @@ public interface StockPriceService {
 	public ResponseEntity<String> deleteStcokPrice(int stockPriceId);
 	public List<StockPrice> getStockPriceByCompany(String companyName)throws Exception;
 	public List<StockPrice> getStockPriceBetween(int companyCode, Date fromDate, Date toDate) throws Exception;
+	public void exportExcel(MultipartFile file);
+	public List<StockPrice> getStockPricesComparison(int companyId, String periodicity);
 }

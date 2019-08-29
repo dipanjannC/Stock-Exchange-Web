@@ -11,38 +11,40 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stock.web.model.IPODetail;
 import com.stock.web.service.IPOService;
 
 @RestController
+@RequestMapping("/ipo")
 public class IPOController {
 
 	@Autowired
 	public IPOService ipoService;
 	
 	
-	@PostMapping("/ipo/add")
+	@PostMapping("/add")
 	public IPODetail addIPO(@RequestBody IPODetail ipo) throws SQLException {
 		
 		return ipoService.insetIPO(ipo);
 	}
 	
-	@DeleteMapping(value="/ipo/delete/{ipoId}")
+	@DeleteMapping(value="/delete/{ipoId}")
 	public ResponseEntity<String> deleteIPO(@PathVariable("ipoId") int ipoId){
 		
 		return ipoService.deleteIPO(ipoId);
 		
 	}
 	
-	@PutMapping("/ipo/update/{ipoId}")
+	@PutMapping("/update/{ipoId}")
 	public ResponseEntity<String> updateIPO(@PathVariable("ipoId") int ipoId, @RequestBody IPODetail ipoDetails) {
 		return ipoService.updateIPO(ipoId, ipoDetails);
 
 	}
 	
-	@GetMapping("/ipo/all")
+	@GetMapping("/all")
 	public List<IPODetail> getIPODetails() throws SQLException{
 		
 		return ipoService.getIPODetails();
@@ -50,7 +52,7 @@ public class IPOController {
 	}
 	
 	
-	@GetMapping("/ipo/companies/{companyName}")
+	@GetMapping("/companies/{companyName}")
 	public IPODetail getIPODetailsByCompany(@PathVariable("companyName") String companyName) throws Exception
 	{
 		

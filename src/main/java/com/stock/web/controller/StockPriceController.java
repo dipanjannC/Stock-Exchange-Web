@@ -11,40 +11,42 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stock.web.model.StockPrice;
 import com.stock.web.service.StockPriceService;
 
 @RestController
+@RequestMapping("/stock-prices")
 public class StockPriceController {
  
 	@Autowired
 	public StockPriceService stockPriceService;
 	
 	
-	@PostMapping("/stock-prices/add")
+	@PostMapping("/stock-price/add")
 	public StockPrice addStockPrice(@RequestBody StockPrice stockPrice) throws SQLException {
 		
 		return stockPriceService.insertStockPrice(stockPrice);
 	}
 	
 	
-	@GetMapping("/stock-prices/all")
+	@GetMapping("/stock-price/all")
 	public List<StockPrice> getStockPrice() throws SQLException{
 		
 		return stockPriceService.getStockPriceList();
 		
 	}
 	
-	@DeleteMapping(value="/stock-prices/delete/{stockPriceId}")
+	@DeleteMapping(value="/stock-price/delete/{stockPriceId}")
 	public ResponseEntity<String> deleteCompany(@PathVariable("stcokPriceId") int stockPriceId){
 		
 		return stockPriceService.deleteStcokPrice(stockPriceId);
 		
 	}
 	
-	@PutMapping("/stock-prices/update/{stockPriceId}")
+	@PutMapping("/stock-price/update/{stockPriceId}")
 	public ResponseEntity<String> updateStockPrice(@PathVariable("stockPriceId") int stockPriceId, @RequestBody StockPrice stockPrice) {
 		
 		

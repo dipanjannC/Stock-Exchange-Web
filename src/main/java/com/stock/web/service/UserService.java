@@ -1,11 +1,21 @@
 package com.stock.web.service;
 
-import java.sql.SQLException;
+import java.util.List;
 
+import com.stock.web.model.UserPojo;
 import com.stock.web.model.User;
 
 public interface UserService {
 
-	public User userLogin(User user) throws SQLException;
-	public User userSignUp(User user) throws SQLException;
+	User save(UserPojo user);
+
+	List<User> findAll();
+
+	void delete(int id);
+
+	User findOne(String username);
+
+	User findById(int id);
+
+	UserPojo update(UserPojo userPojo);
 }

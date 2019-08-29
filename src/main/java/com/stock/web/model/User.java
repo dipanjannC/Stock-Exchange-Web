@@ -9,20 +9,53 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @SequenceGenerator(name = "seq", initialValue = 1001, allocationSize = 1)
-@Table(name = "User")
+@Table(name = "user")
 
 public class User {
 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
-	@Column(name = "Id")
+	@Column(name = "user_id")
 	private int userId;
 	
-	public User( String username, String password, String usertype, String email, int mobileNumber,
-			String confirmed) {
+	@Column(name = "username")
+	@NotNull(message = "Enter Required Value")
+	private String username;
+	
+
+	@Column(name = "password")
+	@NotNull(message = "Enter Required Value")
+	@JsonIgnore
+	private String password;
+	
+	
+	@Column(name = "usertype")
+
+	private String usertype;
+	
+    
+	@Column(name = "email")
+	@NotNull(message = "Enter Required Value")
+	private String email;
+	
+
+	@Column(name = "mobile_number")
+	@NotNull(message = "Enter Required Value")
+	private long mobileNumber;
+	
+
+	@Column(name = "confirmed")
+
+	private boolean confirmed;
+	
+	
+	public User( String username, String password, String usertype, String email, long mobileNumber,
+			boolean confirmed) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -37,35 +70,6 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	@Column(name = "Username")
-	@NotNull(message = "Enter Required Value")
-	private String username;
-	
-
-	@Column(name = "Password")
-	@NotNull(message = "Enter Required Value")
-	private String password;
-	
-	
-	@Column(name = "Usertype")
-
-	private String usertype;
-	
-    
-	@Column(name = "Email")
-	@NotNull(message = "Enter Required Value")
-	private String email;
-	
-
-	@Column(name = "Mobile_Number")
-	@NotNull(message = "Enter Required Value")
-	private int mobileNumber;
-	
-
-	@Column(name = "Confirmed")
-
-	private String confirmed;
 
 	public int getUserId() {
 		return userId;
@@ -107,19 +111,19 @@ public class User {
 		this.email = email;
 	}
 
-	public int getMobileNumber() {
+	public long getMobileNumber() {
 		return mobileNumber;
 	}
 
-	public void setMobileNumber(int mobileNumber) {
+	public void setMobileNumber(long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 
-	public String getConfirmed() {
+	public boolean getConfirmed() {
 		return confirmed;
 	}
 
-	public void setConfirmed(String confirmed) {
+	public void setConfirmed(boolean confirmed) {
 		this.confirmed = confirmed;
 	}
 	

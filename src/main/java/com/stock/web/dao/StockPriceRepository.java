@@ -11,7 +11,7 @@ import com.stock.web.model.StockPrice;
 
 public interface StockPriceRepository extends JpaRepository<StockPrice, Integer> {
 
-	List<StockPrice> findByCompanyCode(int companyCode);
+	public List<StockPrice> findByCompanyCode(int companyCode);
 
 	@Query("Select s from StockPrice s where s.companyCode= :companyCode and s.date between :from_date and :to_date ")
 	public List<StockPrice> getStockPrice(@Param("companyCode") int companyCode, @Param("from_date") Date from_date,
