@@ -61,4 +61,4 @@ Hibernate is a ORM framework which provides some abstraction layer, meaning that
        }
        
     # Put the token - "$2a$10$d3NtLTrbFDfNZPeRG7b42O8GdFt1jKyHuObp2rrVQ13BNZUJMSsqy" at  Authorization : Bearer to use rest of the            endpoints. 
-    # Use the rest of the endpoints to explore more of the services/functionalities.
+    # Use the rest endpoints to explore more of the services/functionalities about the Application.
