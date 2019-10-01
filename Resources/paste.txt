@@ -1,3 +1,4 @@
 https://pastebin.ubuntu.com/p/R4dGtBr8vC/
 https://github.com/demomurali/springmvchelloworld
 https://github.com/pratyushsriva3/stock/blob/master/Models/Sector.java
+https://bootsnipp.com/snippets/1KA79
